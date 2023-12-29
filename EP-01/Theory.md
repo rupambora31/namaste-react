@@ -24,13 +24,15 @@
 - ReactDOM: ReactDOM deals specifically with interacting with the Document Object Model (DOM), providing methods for rendering React components into the DOM.
 
 ## react.development.js vs. react.production.js via CDN:
-Development vs. Production:
+
+### Development vs. Production:
 - react.development.js is larger and contains additional error messages and warnings, beneficial during the development phase for debugging.
 
 - react.production.js is optimized for production, smaller in size, and lacks non-essential messages, focusing solely on performance.
 
 ## async and defer:
-Script Loading Attributes:
+
+### Script Loading Attributes:
 - async: Loads the script asynchronously while parsing the HTML; it doesn't block rendering.
 
 - defer: Loads the script after HTML parsing but before the DOMContentLoaded event, ensuring it doesn't delay page rendering while maintaining order of execution.
