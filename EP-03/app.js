@@ -1,14 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-// JSX => HTML-like or XML-like syntax
-// JSX (transpiled before it reaches the JS) -PARCEL -Babel
-// JSX => Babel transpiles it to React.createElement => ReactElement-JS Object => HTMLElement(render)
+// React Functional Component
+const Title = () => (
+  <h1 id="heading" tabIndex="5">
+    Namaste React using JSX 🚀
+  </h1>
+);
 
-const jsxHeading = <h1 id="heading">Namaste React using JSX 🚀</h1>;
-
-console.log(jsxHeading);
+// Component Composition
+const HeadingComponent = () => (
+  <div id="container">
+    <Title />
+    <h2 id="heading">Namaste React Functional Component</h2>
+  </div>
+); 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-root.render(jsxHeading);
+root.render(<HeadingComponent />);
