@@ -32,8 +32,7 @@
 .res-card {
   margin: 6px;
   padding: 10px;
-  width: 200px;
-  height: 100%;
+  width: 300px;
   border-radius: 10;
 }
 .res-card:hover {
@@ -46,6 +45,8 @@
 }
 
 .res-logo {
+  object-fit: cover;
   width: 100%;
+  height: 200px;
   border-radius: 10;
 }
