@@ -17,6 +17,7 @@
   font-size: 18px;
   font-weight: 500;
   list-style-type: none;
+  align-items: center;
 }
 
 .nav-items > ul > li {
@@ -72,7 +73,15 @@
 }
 .shimmer-button {
   margin: 10px;
-  padding: 10px;
+  padding: 12px;
   width: 80px;
-  height: 4px;
+  border: none;
+}
+
+.login {
+  padding: 0 25px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 5;
+  border: 1px solid gray;
 }
