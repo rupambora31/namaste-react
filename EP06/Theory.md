@@ -1,51 +1,58 @@
-# EP05 -Let's get hooked!(Theory)
-
-## Namaste Food App
-/*
- * Header
- *    -Logo
- *    -Nav items
- * Body
- *    -Search
- *    -RestaurantContainer
- *      -RestaurantCard
- *        -Img
- *        -Name, Rating, Cuisine, ETA, Price
- * Footer
- *    -Copyright
- *    -Links
- *    -Address
- *    -Contacts
- */
+# EP05 -Exploring the world!(Theory)
 
 
+## Microservice:
 
-## Difference Between Named Export, Default Export, and `*` as Export
+- **Definition:** An architectural approach breaking down an application into smaller, independent services, each serving specific business functions.
 
-- **Named Export:** Exports specific functions, variables, or classes from a module by name. Imported using the same names.
+## Monolith Architecture:
+
+- **Definition:** A traditional architectural style where an entire application is built as a single, unified unit.
+
+## Difference Between Monolith and Microservice:
+
+- **Monolith:** Single, unified application architecture.
   
-- **Default Export:** Exports a single value or function as the default for a module. Imported without curly braces and with any desired name.
+- **Microservice:** Divides application into smaller, independent services, allowing scalability and flexibility.
+
+## Importance of `useEffect` Hook:
+
+- **Role:** `useEffect` Hook in React manages side effects in functional components, such as data fetching, subscriptions, or DOM manipulations.
+
+## Optional Chaining:
+
+- **Definition:** JavaScript feature that allows accessing nested object properties without explicitly checking if each level exists.
+
+## Shimmer UI:
+
+- **Definition:** Placeholder UI technique displaying loading or skeleton elements to indicate content loading.
+
+## Difference Between JS Expression and JS Statement:
+
+- **JS Expression:** Produces a value, can be a variable, function call, or combination.
   
-- **`*` as Export (Wildcard Export):** Exports all values from a module as an object. Imported using the object name with dot notation.
+- **JS Statement:** Performs an action, like declarations, loops, or conditionals.
 
-## Importance of `config.js` File
+## Conditional Rendering Example:
 
-- **Purpose:** Centralizes configuration settings like API keys, environment variables, or constants used throughout an application.
-  
-- **Advantage:** Simplifies maintenance by storing all configurations in one file, allowing easy adjustments and access across the app.
+```jsx
+const ExampleComponent = ({ isLoggedIn }) => {
+  return (
+    <div>
+      {isLoggedIn ? <p>Welcome, User!</p> : <p>Please log in.</p>}
+    </div>
+  );
+};
+```
 
-## React Hooks
+## CORS
+- **Definition:** Cross-Origin Resource Sharing allows secure access to resources from one domain to another in web browsers.
 
-- **Definition:** Functions that enable functional components to use state, lifecycle methods, and more without writing a class.
-  
-## Importance of `useState` Hook
 
-- **Role:** `useState` Hook in React allows functional components to have state variables. It replaces the `this.state` in class components.
-  
-- **Advantage:** Enables state management in functional components, facilitating simpler and more concise code.
+## async and await:
+- **async:** Keyword used before a function declaration to make it return a Promise.
 
-### React Hooks revolutionize functional component development by providing state management and lifecycle features. 
+- **await:** Pauses the execution of an async function, awaiting a Promise's resolution
 
-### The `config.js` file centralizes configuration settings.
-
-### While different export methods offer versatility in organizing and importing modules.
+## `const json = await data.json();` `in getRestaurants()`:
+- **Role:** Fetches data asynchronously from an API and converts the response to JSON format using the json() method.
