@@ -41,12 +41,29 @@
 }
 
 .filter {
+  margin: 20px 10px;
   padding: 5px;
+  display: flex;
 }
 
-.filter-btn {
-  margin: 10px;
+.filter-btn,
+.search-btn,
+.search-box {
+  margin-left: 20px;
   cursor: pointer;
+  padding: 6px 15px;
+  width: auto;
+  border: none;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+}
+
+.search-btn {
+  margin-left: 5px;
+}
+
+.search-box {
+  margin: 0;
 }
 .res-logo {
   object-fit: cover;
