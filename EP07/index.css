@@ -68,7 +68,8 @@
 
 .search-box {
   margin: 0;
-  padding: 6px 80px;
+  padding: 6px;
+  width: 300px;
 }
 .res-logo {
   object-fit: cover;
