@@ -1,6 +1,7 @@
 import RestaurantCard from './RestaurantCard';
 import { useEffect, useState } from 'react';
 import Shimmer from './Shimmer';
+import { Link } from 'react-router-dom';
 const Body = () => {
   // Local-state-Variable
   const [listOfRestaurants, setListOfRestaurant] = useState([]);
@@ -16,21 +17,36 @@ const Body = () => {
     fetchData();
   }, []);
 
+  // dynamic way to fetch the data without explicitly specifying the index.
   const fetchData = async () => {
-    const data = await fetch(
-      'https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.1157917&lng=91.7085933&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING'
-    );
+    try {
+      const data = await fetch(
+        'https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.1157917&lng=91.7085933&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING'
+      );
 
-    const json = await data.json();
+      const json = await data.json();
 
-    console.log(json);
-    // Optional-Chaining
-    setListOfRestaurant(
-      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setFilteredRestaurant(
-      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
+      console.log(json);
+
+      let listOfRestaurant = null;
+
+      if (json?.data?.cards) {
+        // The .some() method in JavaScript is a way to iterate over an array. It tests whether at least one element in the array passes the test implemented by the provided function. It stops iterating once such an element is found and returns true, otherwise, it returns false.
+        json.data.cards.some((card) => {
+          const restaurants =
+            card?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+          if (restaurants) {
+            listOfRestaurant = restaurants;
+            return true; // Stop the iteration once found
+          }
+        });
+      }
+
+      setListOfRestaurant(listOfRestaurant);
+      setFilteredRestaurant(listOfRestaurant);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
   };
 
   // Conditional-Rendering
@@ -81,7 +97,12 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredRestaurant.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+          <Link
+            to={'/restaurants/' + restaurant.info.id}
+            key={restaurant.info.id}
+          >
+            <RestaurantCard resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>
