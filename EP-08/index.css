@@ -110,3 +110,10 @@
   border-radius: 5;
   border: 1px solid gray;
 }
+
+.user-card {
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+}
