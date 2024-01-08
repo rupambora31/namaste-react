@@ -5,33 +5,42 @@ class UserClass extends React.Component {
     super(props);
 
     this.state = {
-      count: 0,
+      userInfo: {
+        name: 'Dummy Name',
+        location: 'earth',
+        avatar_url: '',
+      },
     };
 
-    console.log(this.props.name + 'child-constructor');
+    console.log('child-constructor');
   }
-  componentDidMount() {
-    console.log(this.props.name + 'child-componentDidMount');
+  async componentDidMount() {
+    console.log('child-componentDidMount');
     // API calls
+
+    const data = await fetch('https://api.github.com/users/rupambora31');
+    const json = await data.json();
+    this.setState({
+      userInfo: json,
+    });
+    console.log(json);
+  }
+
+  componentDidUpdate() {
+    console.log('componentDidUpdate');
   }
 
   render() {
-    const { location } = this.props; // de-structuring
-    console.log(this.props.name + 'child-render');
+    console.log('child-render');
+
+    const { name, location, avatar_url } = this.state.userInfo;
+
     return (
       <div className="user-card">
-        <h2>Name: {this.props.name} </h2>
+        <img src={avatar_url}></img>
+        <h2>Name: {name} </h2>
         <h3>Location: {location}</h3>
-        <h4>Contact: @rupambora3107</h4>
-        <h5>Count: {this.state.count}</h5>
-        <button
-          onClick={() => {
-            //NEVER UPDATE STATE-VARIABLES DIRECTLY!
-            this.setState({ count: this.state.count + 100 });
-          }}
-        >
-          Increase Count
-        </button>
+        <h4>Contact: @rupambora31</h4>
       </div>
     );
   }
