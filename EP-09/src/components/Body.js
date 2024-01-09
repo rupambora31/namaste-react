@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom';
 import { RESTAURANT_LIST_API } from '../utils/constants';
+import useOnlineStatus from '../utils/useOnlineStatus';
 const Body = () => {
   // Local-state-Variable
   const [listOfRestaurants, setListOfRestaurant] = useState([]);
@@ -47,6 +48,12 @@ const Body = () => {
       console.error('Error fetching data:', error);
     }
   };
+
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false) {
+    return <h1>Looks like you're offline! Please check your internet</h1>;
+  }
 
   // Conditional-Rendering
   return listOfRestaurants.length === 0 ? (
