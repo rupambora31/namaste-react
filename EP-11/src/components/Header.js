@@ -14,11 +14,12 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   return (
-    <div className="flex justify-between bg-blue-50 shadow-md m-2 ">
-      <div className="logo-container">
-        <img className="w-36" src={LOGO_URL} />
+    <div className="flex items-center justify-between bg-blue-50 shadow-md m-2 ">
+      <div className="pl-5 ">
+        {/* <img className="w-36" src={LOGO_URL} /> */}
+        <h1 className="font-bold text-blue-700 text-4xl pb-3">potato</h1>
       </div>
-      <div className="flex items-center">
+      <div className="flex">
         <ul className="flex p-4 m-4 font-medium">
           <li className="px-4">
             <Link to="/">Home</Link>

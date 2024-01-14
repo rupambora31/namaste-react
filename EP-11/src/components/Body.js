@@ -59,8 +59,8 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="m-4 ">
-      <div className="flex">
-        <div className="m-4 p-4">
+      <div className="flex flex-wrap justify-center ">
+        <div className="p-4">
           <input
             type="text"
             className="px-4 py-0.5 border border-solid border-black rounded-md"
@@ -102,7 +102,10 @@ const Body = () => {
           </button>
         </div>
       </div>
-      <div className="flex flex-wrap">
+      <h1 className="m-4 font-bold text-center text-2xl">
+        Restaurants with online food delivery in Guwahati
+      </h1>
+      <div className="flex flex-wrap justify-center">
         {filteredRestaurant.map((restaurant) => (
           <Link
             to={'/restaurants/' + restaurant.info.id}
