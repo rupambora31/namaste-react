@@ -17,7 +17,7 @@ const Header = () => {
     <div className="flex items-center justify-between bg-blue-50 shadow-md m-2 ">
       <div className="pl-5 ">
         {/* <img className="w-36" src={LOGO_URL} /> */}
-        <h1 className="font-bold text-blue-700 text-4xl pb-3">potato</h1>
+        <h1 className="font-black text-blue-700 text-4xl pb-3">potato</h1>
       </div>
       <div className="flex">
         <ul className="flex p-4 m-4 font-medium">
