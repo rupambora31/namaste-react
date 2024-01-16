@@ -1,9 +1,11 @@
 import RestaurantCard, { aggregatedDiscount } from './RestaurantCard';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom';
 import { RESTAURANT_LIST_API } from '../utils/constants';
 import useOnlineStatus from '../utils/useOnlineStatus';
+import UserContext from '../utils/UserContext';
+
 const Body = () => {
   // Local-state-Variable
   const [listOfRestaurants, setListOfRestaurant] = useState([]);
@@ -13,8 +15,6 @@ const Body = () => {
   const [searchText, setSearchText] = useState('');
 
   const RestaurantDiscount = aggregatedDiscount(RestaurantCard);
-  // Whenever state variable update, react triggers a reconciliation cycle(re-renders the component)
-  console.log('body-rendered!', filteredRestaurant);
 
   useEffect(() => {
     fetchData();
@@ -54,6 +54,8 @@ const Body = () => {
     return <h1>Looks like you're offline! Please check your internet</h1>;
   }
 
+  const { setUserInfo, loggedInUser } = useContext(UserContext);
+
   // Conditional-Rendering
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
@@ -63,7 +65,7 @@ const Body = () => {
         <div className="p-4">
           <input
             type="text"
-            className="px-4 py-0.5 border border-solid border-black rounded-md"
+            className="px-4 py-0.5 border border-solid border-slate-400 rounded-md"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
@@ -100,6 +102,14 @@ const Body = () => {
           >
             Top Rated
           </button>
+        </div>
+        <div className="m-4 p-4 flex items-center">
+          <label className="pr-2">Username </label>
+          <input
+            className="px-4 py-0.5 border border-solid border-slate-400 rounded-md"
+            value={loggedInUser}
+            onChange={(e) => setUserInfo(e.target.value)}
+          />
         </div>
       </div>
       <h1 className="m-4 font-bold text-center text-2xl">
