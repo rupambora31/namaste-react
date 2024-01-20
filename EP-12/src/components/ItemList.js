@@ -1,6 +1,15 @@
+import { useDispatch } from 'react-redux';
+import { addItem } from '../utils/cartSlice';
 import { CDN_URL } from '../utils/constants';
 
 const ItemList = ({ items }) => {
+  const dispatch = useDispatch();
+
+  const handleAddItem = (item) => {
+    // Dispatch an action
+    dispatch(addItem(item));
+  };
+
   return (
     <div>
       {items.map((item) => (
@@ -26,7 +35,10 @@ const ItemList = ({ items }) => {
           </div>
           <div className="w-3/12 flex flex-col items-center">
             <div className="absolute ">
-              <button className="p-1 px-6  text-center bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-md shadow-lg mt-24">
+              <button
+                className="p-1 px-6  text-center bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-md shadow-lg mt-24"
+                onClick={() => handleAddItem(item)} //using as a callback Fn, rather than calling directly --> "{handleAddItem(item)}"
+              >
                 Add +
               </button>
             </div>

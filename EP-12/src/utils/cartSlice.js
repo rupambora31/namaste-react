@@ -3,9 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 const cartSlice = createSlice({
   name: 'cart',
   initialState: {
-    items: ['burger', 'pizza'],
+    items: [],
   },
-  reducer: {
+  reducers: {
     // mutating the state here
     addItem: (state, action) => {
       state.items.push(action.payload);

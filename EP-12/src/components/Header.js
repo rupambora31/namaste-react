@@ -19,9 +19,8 @@ const Header = () => {
   // console.log(loggedInUser);
 
   // Subscribing to the store using a Selector
-
   const cartItems = useSelector((store) => store.cart.items);
-  console.log(cartItems)
+  console.log(cartItems);
 
   return (
     <div className="flex items-center justify-between bg-blue-50 shadow-md m-2 ">
@@ -43,10 +42,12 @@ const Header = () => {
             <Link to="/grocery">Grocery</Link>
           </li>
           <li className="px-4">
-            Cart{' '}
-            <span className="text-white p-1 px-1.5 rounded-md bg-blue-700">
-              {cartItems.length}
-            </span>
+            <Link to="/cart">
+              Cart{' '}
+              <span className="text-white p-1 px-1.5 rounded-md bg-gradient-to-r from-cyan-500 to-blue-500">
+                {cartItems.length}
+              </span>
+            </Link>
           </li>
 
           <li
